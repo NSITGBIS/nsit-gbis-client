@@ -46,6 +46,9 @@ header, #header, #landing_form_button {
 		left: 45%;
 		margin-top: -80px;
 	}
+	#getStarted {
+		margin-top: 200px;
+	}
 }
 
 @media (max-width: 414px) {
@@ -57,7 +60,7 @@ header, #header, #landing_form_button {
 		z-index: 1;
 	}
 	#header {
-		height: 850px;
+		height: 80vh;
 	}
 	h1 {
 		font-size: 2em;
@@ -878,7 +881,7 @@ nprogress - css
 }
 
 .yt-container iframe {
-	width: 60%;
+	/* width: 60vw; */
 	height: 100%;
 	/* box-shadow: 0 2px 50px -5px #656D79; */
 }
@@ -896,9 +899,7 @@ nprogress - css
   opacity: 0;
 }
 
-#getStarted {
-	margin-top: 200px;
-}
+
 
 #top-content {
 	margin-top: 100px;

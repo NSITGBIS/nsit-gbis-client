@@ -90,19 +90,28 @@ class LandingPage extends Component {
 								<div className="row">
 									<div className="col-md-2" />
 									<div className="col-md-8">
-										<a className="btn-block btn btn-lg btn-default btn-cta" href="#getStarted">
+										<a
+											className="btn-block btn btn-lg btn-default btn-cta"
+											href="#getStarted"
+										>
 											Get Started
 										</a>
 										<br />
 									</div>
 								</div>
 							</div>
-							<div className="container-fluid yt-container">
-								<iframe
-									frameBorder="0"
-									allowFullScreen=""
-									src="https://www.youtube.com/embed/tBvd7OSDGgQ?modestbranding=1"
-								/>
+							<div className="row">
+							<div className="col-xs-1 col-md-2"></div>							
+								<div className="col-md-8 col-xs-10">
+									<div className="container-fluid embed-responsive embed-responsive-16by9">
+										<iframe
+											frameBorder="0"
+											allowFullScreen=""
+											className="embed-responsive-item"
+											src="https://www.youtube.com/embed/tBvd7OSDGgQ?modestbranding=1"
+										/>
+									</div>
+								</div>
 							</div>
 						</div>
 					</header>
