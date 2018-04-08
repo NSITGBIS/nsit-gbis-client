@@ -88,8 +88,8 @@ class LandingPage extends Component {
 							<br />
 							<div className="container-fluid">
 								<div className="row">
-									<div className="col-md-2" />
-									<div className="col-md-8">
+									<div className="col-md-3 col-xs-2" />
+									<div className="col-md-6 col-xs-8">
 										<a
 											className="btn-block btn btn-lg btn-default btn-cta"
 											href="#getStarted"
@@ -99,17 +99,17 @@ class LandingPage extends Component {
 										<br />
 									</div>
 								</div>
-							</div>
-							<div className="row">
-							<div className="col-xs-1 col-md-2"></div>							
-								<div className="col-md-8 col-xs-10">
-									<div className="container-fluid embed-responsive embed-responsive-16by9">
-										<iframe
-											frameBorder="0"
-											allowFullScreen=""
-											className="embed-responsive-item"
-											src="https://www.youtube.com/embed/tBvd7OSDGgQ?modestbranding=1"
-										/>
+								<div className="row">
+									<div className="col-xs-1 col-md-3" />
+									<div className="col-md-6 col-xs-10">
+										<div className="embed-responsive embed-responsive-16by9">
+											<iframe
+												frameBorder="0"
+												allowFullScreen=""
+												className="embed-responsive-item"
+												src="https://www.youtube.com/embed/tBvd7OSDGgQ?modestbranding=1"
+											/>
+										</div>
 									</div>
 								</div>
 							</div>
