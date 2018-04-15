@@ -7,6 +7,9 @@ import Store from '../../utils/storage';
 import APIManager from '../../utils/APIManager';
 import { API } from '../../configs/app_config';
 
+import { Line, Circle } from 'rc-progress';
+import { ProgressBar } from 'react-bootstrap';
+
 // import SignUp from '../components/landing/signup';
 
 class LandingPage extends Component {
@@ -14,13 +17,61 @@ class LandingPage extends Component {
 		store: PropTypes.object.isRequired
 	};
 	state = {
-		open: false
+		open: false,
+		progress: 0,
+		uploaded: 0,
+		filename: '',
+		preuploadname: ''
 	};
+	setprogress = p => {
+		this.setState({
+			progress: p
+		});
+	};
+	resetState = () => {
+		this.setState({
+			progress: 0,
+			uploaded: 0,
+			preuploadname: ''
+		});
+	};
+	uploadDocumentRequest = event => {
+		const file = event.target.files[0];
+		const fileName = event.target.files[0].name.replace(/\s/g, '');
+		const formData = new FormData();
+		formData.append('file', file);
+		formData.append('filename', fileName);
+		// console.log(file);
+		// console.log(formData);
+		this.setState({ preuploadname: fileName });
+		APIManager.postData('/upload', formData, null, this.setprogress).then(
+			res => {
+				if (res.status === 200) {
+					this.setState({ uploaded: 1, filename: res.body.fileName });
+				}
+			}
+		);
+
+		// let data = new FormData();
+		// data.append('file', document);
+		// data.append('name', name);
+
+		// const file = event.target.files[0];
+		// let formData = new FormData();
+		// formData.append('file', file);
+
+		// return (dispatch) => {
+		//   axios.post('/files', data)
+		//     .then(response => dispatch(uploadSuccess(response))
+		//     .catch(error => dispatch(uploadFail(error));
+		// };
+	};
+
 	handleRequestClose = () => {
 		this.setState({ open: !this.state.open });
 	};
 	render() {
-		const { open } = this.state;
+		const { open, progress, uploaded, filename, preuploadname } = this.state;
 		const { store } = this.props;
 		return (
 			<Provider store={store}>
@@ -120,7 +171,7 @@ class LandingPage extends Component {
 						<div className="container-fluid">
 							<div className="row">
 								<h3 className="section-heading text-center">
-									How to get started?
+									Upload a file to encode or decode
 								</h3>
 								<hr className="primary" />
 							</div>
@@ -134,8 +185,45 @@ class LandingPage extends Component {
 										<button className="btn-block btn btn-lg btn-default btn-cta">
 											<i className="fa fa-upload" /> Upload File
 										</button>
-										<input type="file" name="myfile" />
+										<input
+											type="file"
+											name="myfile"
+											onClick={this.resetState}
+											onChange={this.uploadDocumentRequest}
+										/>
 									</div>
+									{progress !== 0 && (
+										<div className="progressbar-wrapper">
+											{/* <Line percent={progress} strokeWidth="2" /> */}
+											<ProgressBar
+												active
+												now={progress}
+												style={{ marginBottom: '0px' }}
+											/>
+											{progress != 100 ? (
+												<p>{progress} %</p>
+											) : !uploaded ? (
+												preuploadname.endsWith('.dna') ? (
+													<p>Decoding DNA file</p>
+												) : (
+													<p>Converting file into DNA</p>
+												)
+											) : (
+												<p>Download the file</p>
+											)}
+										</div>
+									)}
+									{uploaded === 1 && (
+										<div className="upload-btn-wrapper">
+											<a
+												href={`/uploads/${filename}`}
+												className="btn-block btn btn-lg btn-default btn-cta"
+												download
+											>
+												<i className="fa fa-download" /> Download File
+											</a>
+										</div>
+									)}
 								</div>
 							</div>
 						</div>

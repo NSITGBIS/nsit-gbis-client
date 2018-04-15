@@ -1,10 +1,10 @@
 /**
-* Api Manager Module
-* Used ES6 arrow function
-*/
+ * Api Manager Module
+ * Used ES6 arrow function
+ */
 import Request from 'superagent';
 
-const responseTime = 15000;
+const responseTime = 200000;
 const APIManager = {
 	getData: (url, params, header) => {
 		return new Promise((resolve, reject) => {
@@ -18,7 +18,7 @@ const APIManager = {
 				.catch(reject);
 		});
 	},
-	postData: (url, params, header) => {
+	postData: (url, params, header, progress) => {
 		return new Promise((resolve, reject) => {
 			Request.post(url)
 				.timeout({
@@ -27,6 +27,9 @@ const APIManager = {
 				.send(params)
 				.set('Authorization', header)
 				.set('Accept', 'application/json')
+				.on('progress', e => {
+					progress(e.percent.toFixed(2));
+				})
 				.then(resolve)
 				.catch(reject);
 		});
