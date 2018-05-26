@@ -10,16 +10,16 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 // import firebase from '../components/common/firebase';
 
-import Main from '../components/dashboard/main';
-import Dashboard from '../components/dashboard/dashboard_components/dashboard';
-import Trade from '../components/dashboard/trade/trade';
-import AddMoney from '../components/dashboard/add_money/add_money';
-import Send from '../components/dashboard/send/send';
-import Receive from '../components/dashboard/receive/receive';
-import Withdraw from '../components/dashboard/withdraw/withdraw';
-import Passbook from '../components/dashboard/passbook/passbook';
-import Settings from '../components/dashboard/settings/settings';
-import StandBy from '../components/dashboard/settings/standby';
+// import Main from '../components/dashboard/main';
+// import Dashboard from '../components/dashboard/dashboard_components/dashboard';
+// import Trade from '../components/dashboard/trade/trade';
+// import AddMoney from '../components/dashboard/add_money/add_money';
+// import Send from '../components/dashboard/send/send';
+// import Receive from '../components/dashboard/receive/receive';
+// import Withdraw from '../components/dashboard/withdraw/withdraw';
+// import Passbook from '../components/dashboard/passbook/passbook';
+// import Settings from '../components/dashboard/settings/settings';
+// import StandBy from '../components/dashboard/settings/standby';
 import AppTheme from '../../theme/variables';
 
 const styles = theme => ({
